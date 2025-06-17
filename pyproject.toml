@@ -31,7 +31,7 @@ include = [
 [project]
 name = "PyLD"
 dynamic = ["version", "readme"]
-requires-python = ">= 3.13"
+requires-python = ">= 3.10"
 description="Python implementation of the JSON-LD API"
 authors = [
 {name = "Digital Bazaar", email="support@digitalbazaar.com"}
