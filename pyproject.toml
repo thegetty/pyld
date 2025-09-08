@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # The following are specific to Black, you probably don't want those.
+  | blib2to3
+  | tests/data
+  | profiling
+)/
+'''
+
+[tool.setuptools.dynamic]
+version = {attr = "pyld.__version__"}
+readme = {file = ["README.rst", "USAGE.rst"]}
+
+[tool.setuptools.packages.find]
+where = ["lib"]
+include = [
+        "c14n",
+        "pyld",
+        "pyld.documentloader"
+]
+
+[project]
+name = "PyLD"
+dynamic = ["version", "readme"]
+requires-python = ">= 3.10"
+description="Python implementation of the JSON-LD API"
+authors = [
+{name = "Digital Bazaar", email="support@digitalbazaar.com"}
+]
+urls = {github = "https://github.com/digitalbazaar/pyld"}
+license = {text = "BSD 3-Clause license"}
+dependencies=[
+    "cachetools",
+    "frozendict",
+    "lxml"
+]
+
+
+[project.optional-dependencies]
+requests = ["requests"]
+aiohttp = ["aiohttp"]
+cachetools = ["cachetools"]
+frozendict = ["frozendict"]
